@@ -11,7 +11,7 @@ function isAnagram(s: string, t: string): boolean {
     for (let i = 0; i < s.length; i++) {
         count[s[i]] = (count[s[i]] || 0) + 1;
         count[t[i]] = (count[t[i]] || 0) - 1;
-    }
+    }   
     return Object.values(count).every(v => v === 0);
 };
 // #HashTable #String #Sorting
