@@ -7,4 +7,4 @@ https://leetcode.com/u/richard523/
 
 # .md shall be notes
 
-# .ts shall be an leetcode submission
+# .ts shall be a leetcode submission
