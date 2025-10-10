@@ -2,12 +2,29 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Deno: Run Current File",
+      "name": "Deno: Debug Current File (Full Debug)",
       "type": "deno",
       "request": "launch",
       "program": "${file}",
-      "args": [],
+      "console": "internalConsole",
+      "args": [
+        "--allow-all"
+      ],
       "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Deno: Run Current File (Fast Execution)",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "deno",
+      "program": "${file}",
+      "args": [
+        "run",
+        "--allow-all"
+      ],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "stopOnEntry": false
     },
     {
       "name": "C/C++ Runner: Debug Session",

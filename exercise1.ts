@@ -5,5 +5,8 @@ let c = {
     banana: b
 }
 let d = c.apple * 4;
+let e = { ...c, cherry: d };
+
+
 
 console.log(d);
