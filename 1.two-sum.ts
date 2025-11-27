@@ -4,25 +4,20 @@
  * [1] Two Sum
  */
 
-// @lc code=start #
-function twoSum(nums: number[], target: number): number[] {
-   const map = new Map<number, number>();
-   for (let i = 0; i < nums.length; i++) {
-      const num = nums[i];
-      if (num === undefined) continue;
-      const complement = target - num;
-      if (map.has(complement)) {
-         const idx = map.get(complement);
-         if (idx !== undefined) {
-            return [idx, i];
-         }
-      }
-      map.set(num, i);
-   }
-   console.log(map);
-   return [];
+// @lc code=start
+export function twoSum(nums: number[], target: number): number[] {
+    const numMap = new Map<number, number>(); // Map to store number -> index
+
+    for (let i = 0; i < nums.length; i++) {
+        const complement = target - nums[i];
+        if (numMap.has(complement)) {
+            return [numMap.get(complement)!, i];
+        }
+        numMap.set(nums[i], i);
+    }
+
+    // As per problem statement, every input has exactly one pair of indices.
+    // So, this line should theoretically not be reached.
+    return [];
 };
-// #Map #HashTable #one-pass
-// Time Complexity: O(n)
-// Space Complexity: O(n)
 // @lc code=end
