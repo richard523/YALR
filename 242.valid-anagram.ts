@@ -5,18 +5,24 @@
  */
 
 // @lc code=start
-function isAnagram(s: string, t: string): boolean {
-    if (s.length !== t.length) return false;
-    const count: Record<string, number> = {};
-    for (let i = 0; i < s.length; i++) {
-        count[s[i]] = (count[s[i]] || 0) + 1;
-        count[t[i]] = (count[t[i]] || 0) - 1;
-    }   
-    return Object.values(count).every(v => v === 0);
-};
-// #HashTable #String #Sorting
-// #Object.values(...).every(...);
-// Time Complexity: O(n)
-// Space Complexity: O(1)
+export function isAnagram(s: string, t: string): boolean {
+    if (s.length !== t.length) {
+        return false;
+    }
 
+    const charCounts = new Array(26).fill(0); // For lowercase English letters 'a' through 'z'
+
+    for (let i = 0; i < s.length; i++) {
+        charCounts[s.charCodeAt(i) - 'a'.charCodeAt(0)]++;
+        charCounts[t.charCodeAt(i) - 'a'.charCodeAt(0)]--;
+    }
+
+    for (let i = 0; i < 26; i++) {
+        if (charCounts[i] !== 0) {
+            return false;
+        }
+    }
+
+    return true;
+};
 // @lc code=end
