@@ -5,23 +5,25 @@
  */
 
 // @lc code=start
-// input = array of strings
-// output = list of lists (type string)
-function groupAnagrams(strs: string[]): string[][] {
-    let map = new Map<String, String>();
-    for (let i = 0; i < strs.length; i++) {
-        let sorted = strs[i]!.split('').sort().join('');
-        if (map.has(sorted)) {
-            map.set(sorted, map.get(sorted) + ',' + strs[i]);
+export function groupAnagrams(strs: string[]): string[][] {
+    const anagramMap = new Map<string, string[]>();
+
+    for (const str of strs) {
+        const charCounts = new Array(26).fill(0);
+        for (let i = 0; i < str.length; i++) {
+            charCounts[str.charCodeAt(i) - 'a'.charCodeAt(0)]++;
+        }
+        // Create a unique key from the character counts
+        // e.g., "1#0#0#1#..." for "ab"
+        const key = charCounts.join('#');
+
+        if (anagramMap.has(key)) {
+            anagramMap.get(key)!.push(str);
         } else {
-            map.set(sorted, strs[i]!);
+            anagramMap.set(key, [str]);
         }
     }
-    let result: string[][] = [];
-    for (let value of map.values()) {
-        result.push(value.split(','));
-    }
-    return result;
+
+    return Array.from(anagramMap.values());
 };
 // @lc code=end
-
