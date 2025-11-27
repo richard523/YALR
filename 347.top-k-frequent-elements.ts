@@ -5,23 +5,34 @@
  */
 
 // @lc code=start
-function topKFrequent(nums: number[], k: number): number[] {
-    nums.sort((a, b) => a - b); // O(n log n) sort
-    let map = new Map<number, number>(); // num -> frequency
-    for (let i = 0; i < nums.length; i++) { // O(n)
-        if (map.has(nums[i]!)) {
-            map.set(nums[i]!, map.get(nums[i]!)! + 1);
-        } else {
-            map.set(nums[i]!, 1);
+export function topKFrequent(nums: number[], k: number): number[] {
+    // Step 1: Count the frequency of each number
+    const frequencyMap = new Map<number, number>();
+    for (const num of nums) {
+        frequencyMap.set(num, (frequencyMap.get(num) || 0) + 1);
+    }
+
+    // Step 2: Create buckets based on frequency
+    // The index of the array represents the frequency, and the value is a list of numbers with that frequency.
+    // The maximum possible frequency is nums.length.
+    const buckets: number[][] = Array.from({ length: nums.length + 1 }, () => []);
+
+    for (const [num, freq] of frequencyMap.entries()) {
+        buckets[freq].push(num);
+    }
+
+    // Step 3: Collect the top k frequent elements
+    const result: number[] = [];
+    // Iterate from the highest possible frequency down to 1
+    for (let i = buckets.length - 1; i >= 0 && result.length < k; i--) {
+        if (buckets[i].length > 0) {
+            result.push(...buckets[i]);
         }
     }
-    let freqArray: [number, number][] = Array.from(map.entries());
-    freqArray.sort((a, b) => b[1] - a[1]); // O(n log n) sort by frequency
-    let result: number[] = [];
-    for (let i = 0; i < k; i++) { // O(k)
-        result.push(freqArray[i]![0]);
-    }
-    return result;
+
+    // The problem states that the answer is always unique and we can return in any order.
+    // If result.length exceeds k due to multiple numbers having the same frequency at the k-th spot,
+    // we need to slice it to exactly k elements.
+    return result.slice(0, k);
 };
 // @lc code=end
-
