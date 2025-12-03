@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Simple script to run a specific Jest test file by base name.
+# Usage: ./test <basename>
+# Example: ./test 15.3sum
+
+if [[ -z "$1" ]]; then
+  echo "Error: No test name provided."
+  echo "Usage: $0 <basename>"
+  exit 1
+fi
+
+TEST_FILE="${1}.test.ts"
+
+if [[ ! -f "$TEST_FILE" ]]; then
+  echo "Error: Test file '$TEST_FILE' not found in the current directory."
+  exit 1
+fi
+
+# Run the specific test using npx jest
+npx jest "$TEST_FILE"
