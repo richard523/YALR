@@ -1,0 +1,13 @@
+{
+ "compilerOptions": {
+  "lib": ["es2025"],
+  "module": "commonjs",
+  "outDir": "dist",
+  "sourceMap": true,
+  "strict": true,
+  "target": "es2025"
+ },
+ "include": [
+  "src"
+ ]
+}
