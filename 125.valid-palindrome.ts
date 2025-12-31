@@ -5,42 +5,36 @@
  */
 
 // @lc code=start
-function isPalindrome(s: string): boolean {
-  // Two-pointer solution: advance left/right skipping non-alphanumeric
-  // compare lowercase characters. O(n) time, O(1) extra space.
-  let left = 0;
-  let right = s.length - 1;
+export function isPalindrome(s: string): boolean {
+    let left = 0;
+    let right = s.length - 1;
 
-  const isAlphaNum = (ch: string) => /[a-z0-9]/.test(ch);
-  
+    while (left < right) {
+        // Move left pointer until it points to an alphanumeric character
+        while (left < right && !isAlphaNumeric(s[left])) {
+            left++;
+        }
+        // Move right pointer until it points to an alphanumeric character
+        while (left < right && !isAlphaNumeric(s[right])) {
+            right--;
+        }
 
-  while (left < right) {
-    let lc = s.charAt(left);
-    let rc = s.charAt(right);
+        // Compare characters (case-insensitive)
+        if (left < right && s[left].toLowerCase() !== s[right].toLowerCase()) {
+            return false;
+        }
 
-    // move left forward until alphanumeric
-    while (left < right && !isAlphaNum(lc.toLowerCase())) {
-      left++;
-      lc = s.charAt(left);
+        left++;
+        right--;
     }
 
-    // move right backward until alphanumeric
-    while (left < right && !isAlphaNum(rc.toLowerCase())) {
-      right--;
-      rc = s.charAt(right);
-    }
+    return true;
+};
 
-    if (left >= right) break;
-
-    if (lc.toLowerCase() !== rc.toLowerCase()) return false;
-
-    left++;
-    right--;
-  }
-
-  return true;
+function isAlphaNumeric(char: string): boolean {
+    const code = char.charCodeAt(0);
+    return (code >= 48 && code <= 57) || // numeric (0-9)
+           (code >= 65 && code <= 90) || // upper alpha (A-Z)
+           (code >= 97 && code <= 122);  // lower alpha (a-z)
 }
-// #TwoPointers #String
-// Time Complexity: O(n)
-// Space Complexity: O(1)
 // @lc code=end
