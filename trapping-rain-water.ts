@@ -1,70 +1,45 @@
-                                                                                                                                                                                                                                            
-/*                                                                                                                                                                                                                                          
-                                                                                                                                                                                                                                            
- * @lc app=leetcode id=42 lang=typescript                                                                                                                                                                                                   
-                                                                                                                                                                                                                                            
- *                                                                                                                                                                                                                                          
-                                                                                                                                                                                                                                            
- * [42] Trapping Rain Water                                                                                                                                                                                                                 
-                                                                                                                                                                                                                                            
- */                                                                                                                                                                                                                                         
-                                                                                                                                                                                                                                            
-                                                                                                                                                                                                                                            
-                                                                                                                                                                                                                                            
-// @lc code=start                                                                                                                                                                                                                           
-                                                                                                                                                                                                                                            
-export function trap(height: number[]): number {                                                                                                                                                                                            
-                                                                                                                                                                                                                                            
-    if (height.length === 0) return 0;                                                                                                                                                                                                      
-                                                                                                                                                                                                                                            
-                                                                                                                                                                                                                                            
-                                                                                                                                                                                                                                            
-    let left = 0, right = height.length - 1;                                                                                                                                                                                                
-                                                                                                                                                                                                                                            
-    let maxLeft = 0, maxRight = 0;                                                                                                                                                                                                          
-                                                                                                                                                                                                                                            
-    let waterTrapped = 0;                                                                                                                                                                                                                   
-                                                                                                                                                                                                                                            
-                                                                                                                                                                                                                                            
-                                                                                                                                                                                                                                            
-    while (left < right) {                                                                                                                                                                                                                  
-                                                                                                                                                                                                                                            
-        if (height[left] <= height[right]) {                                                                                                                                                                                                
-                                                                                                                                                                                                                                            
-            if (height[left] >= maxLeft) {                                                                                                                                                                                                  
-                                                                                                                                                                                                                                            
-                maxLeft = height[left];                                                                                                                                                                                                     
-                                                                                                                                                                                                                                            
-            } else {                                                                                                                                                                                                                        
-                                                                                                                                                                                                                                            
-                waterTrapped += maxLeft - height[left];                                                                                                                                                                                     
-                                                                                                                                                                                                                                            
-            }                                                                                                                                                                                                                               
-                                                                                                                                                                                                                                            
-            left++;                                                                                                                                                                                                                         
-                                                                                                                                                                                                                                            
-        } else {                                                                                                                                                                                                                            
-                                                                                                                                                                                                                                            
-            if (height[right] >= maxRight) {                                                                                                                                                                                                
-                                                                                                                                                                                                                                            
-                maxRight = height[right];                                                                                                                                                                                                   
-                                                                                                                                                                                                                                            
-            } else {                                                                                                                                                                                                                        
-                                                                                                                                                                                                                                            
-                waterTrapped += maxRight - height[right];                                                                                                                                                                                   
-                                                                                                                                                                                                                                            
-            }                                                                                                                                                                                                                               
-                                                                                                                                                                                                                                            
-            right--;                                                                                                                                                                                                                        
-                                                                                                                                                                                                                                            
-        }                                                                                                                                                                                                                                   
-                                                                                                                                                                                                                                            
-    }                                                                                                                                                                                                                                       
-                                                                                                                                                                                                                                            
-                                                                                                                                                                                                                                            
-                                                                                                                                                                                                                                            
-    return waterTrapped;                                                                                                                                                                                                                    
-                                                                                                                                                                                                                                            
-};                                                                                                                                                                                                                                          
-                                                                                                                                                                                                                                            
-// @lc code=end         
+/*
+
+ * @lc app=leetcode id=42 lang=typescript
+
+ *
+
+ * [42] Trapping Rain Water
+
+ */
+
+// @lc code=start
+
+export function trap(height: number[]): number {
+    if (height.length === 0) return 0;
+
+    let left = 0, right = height.length - 1;
+
+    let maxLeft = 0, maxRight = 0;
+
+    let waterTrapped = 0;
+
+    while (left < right) {
+        if (height[left] <= height[right]) {
+            if (height[left] >= maxLeft) {
+                maxLeft = height[left];
+            } else {
+                waterTrapped += maxLeft - height[left];
+            }
+
+            left++;
+        } else {
+            if (height[right] >= maxRight) {
+                maxRight = height[right];
+            } else {
+                waterTrapped += maxRight - height[right];
+            }
+
+            right--;
+        }
+    }
+
+    return waterTrapped;
+}
+
+// @lc code=end
