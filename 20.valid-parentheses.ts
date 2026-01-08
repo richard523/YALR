@@ -1,3 +1,10 @@
+/*
+ * @lc app=leetcode id=20 lang=typescript
+ *
+ * [20] Valid Parentheses
+ */
+
+// @lc code=start
 export function isValid(s: string): boolean {
     const stack: string[] = [];
     const map: { [key: string]: string } = {
@@ -19,3 +26,4 @@ export function isValid(s: string): boolean {
 
     return stack.length === 0;
 }
+// @lc code=end
