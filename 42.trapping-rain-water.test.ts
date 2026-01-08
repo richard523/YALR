@@ -1,4 +1,4 @@
-import { trap } from "./trapping-rain-water";
+import { trap } from "./42.trapping-rain-water";
 
 describe("trap", () => {
     it("should return the correct trapped rain water for example 1", () => {
