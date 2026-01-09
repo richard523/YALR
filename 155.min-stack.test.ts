@@ -1,4 +1,4 @@
-import { MinStack } from "./155.min-stack";
+import MinStack from "./155.min-stack";
 
 describe("MinStack", () => {
     let minStack: MinStack;

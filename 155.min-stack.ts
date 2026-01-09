@@ -5,7 +5,7 @@
  */
 
 // @lc code=start
-export class MinStack {
+export default class MinStack {
     private stack: { val: number; min: number }[];
 
     constructor() {
