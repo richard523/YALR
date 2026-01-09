@@ -12,6 +12,7 @@ export default class MinStack {
         this.stack = [];
     }
 
+
     push(val: number): void {
         const currentMin = this.stack.length === 0
             ? val
