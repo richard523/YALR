@@ -5,12 +5,13 @@
  */
 
 // @lc code=start
-export class MinStack {
+export default class MinStack {
     private stack: { val: number; min: number }[];
 
     constructor() {
         this.stack = [];
     }
+
 
     push(val: number): void {
         const currentMin = this.stack.length === 0
