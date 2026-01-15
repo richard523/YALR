@@ -11,14 +11,15 @@ https://leetcode.com/u/richard523/
 
 ![](https://dl.dropboxusercontent.com/scl/fi/7r0goulrlbty7m6pfyaxb/Obsidian_UdObaxDzfp.png?rlkey=hh92xwhmnk4jybe30uuryv9tt&dl=0)
 
-## Installation
+## Installation (bun preferred) https://bun.com/docs/installation
+
 ```bash
-npm install
-```6
+curl -fsSL https://bun.com/install | bash
+```
 
 ## Running All Tests
 ```bash
-npm test
+bun test
 ```
 
 ## Running a Single Test
@@ -37,5 +38,5 @@ The `test` script is located at the project root and is executable.
 
 ## Run all tests at once:
 ```bash
-npm run test
+bun test
 ```
