@@ -22,6 +22,13 @@ curl -fsSL https://bun.com/install | bash
 bun test
 ```
 
+## Counting Problems
+You can count how many problems you have solved so far:
+```bash
+./count
+```
+This script identifies problems by looking for numbered files and files with corresponding `.test.ts` files.
+
 ## Running a Single Test
 You can run an individual test file using the provided `test` script:
 ```bash
@@ -39,4 +46,9 @@ The `test` script is located at the project root and is executable.
 ## Run all tests at once:
 ```bash
 bun test
+```
+
+## List problem count:
+```
+./count
 ```
